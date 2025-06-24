@@ -1,0 +1,239 @@
+/* src/components/Footer.css */
+.footer {
+  background-color: #18305ae3;
+  color: white;
+  padding: 20px 60px;
+  padding-bottom: 10px;
+  font-family: "Cairo", sans-serif;
+  backdrop-filter: blur(10px);
+}
+
+.footer-container {
+  max-width: 100%;
+  margin: 0;
+  margin-right: 40px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-section h3 {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Newsletter Section */
+.newsletter {
+  display: flex;
+  gap: 8px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.8rem;
+}
+
+.newsletter button {
+  padding: 8px 15px;
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.8rem;
+}
+
+.newsletter button:hover {
+  background-color: #0099cc;
+}
+
+.newsletter p {
+  font-size: 0.5rem;
+  color: #ccc;
+}
+
+/* Quick Links */
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
+
+.footer-section ul li a:hover {
+  color: #00bfff;
+}
+
+/* Logo and Description */
+.footer-brand {
+  text-align: right;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.logo-title img {
+  height: 60px;
+  width: auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.brand-text h2 {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.brand-text p {
+  color: #ccc;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.brand-description {
+  color: #ccc;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+.brand-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.brand-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.3s;
+}
+
+.brand-nav a:hover {
+  color: #00bfff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-links {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-links {
+    grid-template-columns: 1fr;
+    grid-column: auto;
+  }
+  
+  .footer-brand {
+    text-align: center;
+  }
+}
+
+/* Copyright Section */
+.footer-copyright {
+  text-align: center;
+}
+
+.footer-copyright hr {
+  border: none;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0 0 15px 0;
+}
+
+.footer-copyright p {
+  color: #ccc;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.2rem;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #00bfff;
+  transform: translateY(-2px);
+}
+
+/* Remove old app-buttons styles */
+.app-buttons {
+  display: none;
+}
+
+.app-button img {
+  display: none;
+}
+  

@@ -1,0 +1,298 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .cover-img {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cover-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .cover-img h1 {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(5%, -50%); /* Moves it to center-right */
+    color: rgb(167, 167, 167);
+    font-size: 10rem;
+    text-shadow: -8px 8px 8px rgba(110, 110, 110, 0.5);
+    font-family: "Cairo", sans-serif;
+  }
+  
+  
+  .universities-page-content {
+    display: flex;
+    gap: 30px;
+    max-width: 1900px;
+    margin: 40px;
+    padding: 0 20px;
+  }
+  
+  .universities-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+    gap: 20px;
+    align-items: start;
+    grid-auto-rows: min-content;
+  }
+  
+  .universities-sidebar {
+    width: 350px;
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+  
+  .university-card {
+    
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    min-height: 250px;
+  }
+  
+  .university-card:hover{
+    .university-title{
+      color: #00bfff;
+    }
+  }
+  
+  .university-card a {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .university-cover-container {
+    position: relative;
+    height: 140px;
+  }
+  
+  .university-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  
+  .university-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    margin-top: 9%; /* Change from 15px to 0 */
+  }
+  
+  .university-logo {
+    position: absolute;
+    bottom: -30px; /* Change from -25px to -35px for more overlap */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid white;
+    background-color: white;
+    object-fit: contain;
+  }
+  
+  .university-title {
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    font-family: "Cairo", sans-serif;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 8px;
+  }
+  
+  .university-location {
+    display: inline-block;
+    padding: 4px 8px;
+    
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    font-family: "Cairo", sans-serif;
+  }
+  
+  .sidebar-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f4a51c;
+    font-family: "Cairo", sans-serif;
+    text-align: right;
+  }
+  
+  .locations-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .location-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    font-family: "Cairo", sans-serif;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+  }
+  
+  .location-item:last-child {
+    border-bottom: none;
+  }
+  
+  .location-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .location-item.active {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+  }
+  
+  .location-name {
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .location-count {
+    background: #f4a51c;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+  
+  .important-universities {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .important-university {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .important-university:hover{
+    .important-university-info h4{
+      color: #00bfff;
+    }
+  }
+  
+  .important-university:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .important-university-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border-radius: 50%;
+  }
+  
+  .important-university-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .important-university-info h4 {
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    font-family: "Cairo", sans-serif;
+    text-align: right;
+  }
+  
+  .university-date {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+  }
+  
+  @media (max-width: 1200px) {
+    .universities-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .cover-img h1 {
+      font-size: 7rem;
+    }
+    
+    .universities-page-content {
+      flex-direction: column;
+    }
+  
+    .universities-sidebar {
+      width: 100%;
+      order: -1;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .universities-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .cover-img h1 {
+      font-size: 5rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .universities-container {
+      grid-template-columns: 1fr;
+    }
+    .cover-img h1 {
+      font-size: 4rem;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  

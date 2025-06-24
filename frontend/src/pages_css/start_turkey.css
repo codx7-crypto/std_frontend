@@ -1,0 +1,90 @@
+.start-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    direction: rtl;
+    font-family: "Cairo", sans-serif;
+  }
+  
+  .start-header h1 {
+    color: #1976D2;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .start-header p {
+    font-size: 1.1rem;
+    line-height: 2rem;
+    color: #444;
+    text-align: right;
+    margin-bottom: 40px;
+  }
+  
+  .start-section-title {
+    font-size: 1.4rem;
+    background-color: #e9f0ff;
+    padding: 12px 16px;
+    color: #1976D2;
+    border-right: 4px solid #4a90e2;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .start-highlight-box {
+    background-color: #f8f9fb;
+    border: 1px solid #d3e2f1;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .start-subtitle {
+    color: #FB8C00;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+  }
+  
+  .start-checklist {
+    list-style-type: disc;
+    padding-right: 20px;
+    line-height: 2.2rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .start-image {
+    text-align: center;
+    margin: 7em 0;
+
+  }
+  
+  .start-image img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: auto;
+  }
+  
+  .start-cta {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .start-cta button {
+    background-color: #1976D2;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-cta button:hover {
+    background-color: #0d47a1;
+  }
+  
