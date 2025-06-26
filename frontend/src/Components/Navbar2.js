@@ -19,7 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/universitiesnames');
+        const response = await fetch('http://stdbackend-production.up.railway.app/api/universitiesnames');
         const data = await response.json();
 
         if (Array.isArray(data.universities)) {
@@ -43,7 +43,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchMajors = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/majorsnames');
+        const response = await fetch('http://stdbackend-production.up.railway.app/api/majorsnames');
         const data = await response.json();
 
         if (Array.isArray(data.majors)) {
