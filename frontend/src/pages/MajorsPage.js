@@ -14,7 +14,7 @@ const MajorsPage = () => {
   useEffect(() => {
     const fetchMajors = async () => {
       try {
-        const response = await fetch('http://stdbackend-production.up.railway.app/api/majors');
+        const response = await fetch('https://stdbackend-production.up.railway.app/api/majors');
         const data = await response.json();
         setMajorsData(data.majorsData);
         setCategories(['الكل', ...data.categories]);
