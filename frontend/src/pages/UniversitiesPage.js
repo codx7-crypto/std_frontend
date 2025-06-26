@@ -14,7 +14,7 @@ const UniversitiesPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://stdbackend-production.up.railway.app/api/universities");
+        const res = await fetch("https://stdbackend-production.up.railway.app/api/universities");
         const data = await res.json();
         console.log(data);
         setUniversities(data.universities || []);
