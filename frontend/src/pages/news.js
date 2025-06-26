@@ -16,7 +16,7 @@ const News = () => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`http://stdbackend-production.up.railway.app/api/news/${id}`);
+        const response = await fetch(`https://stdbackend-production.up.railway.app/api/news/${id}`);
         
         if (!response.ok) {
           throw new Error('Failed to fetch news');
