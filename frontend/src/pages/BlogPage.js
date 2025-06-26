@@ -9,7 +9,7 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/blogs')
+    fetch('http://stdbackend-production.up.railway.app/api/blogs')
       .then(res => res.json())
       .then(data => setBlogs(data))
       .catch(err => console.error('Error loading blogs:', err));
