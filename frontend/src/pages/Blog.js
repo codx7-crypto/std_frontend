@@ -14,7 +14,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/blogs/${id}`);
+        const response = await fetch(`http://stdbackend-production.up.railway.app/api/blogs/${id}`);
         if (!response.ok) throw new Error('Failed to fetch blog');
         const data = await response.json();
         setBlog(data);
