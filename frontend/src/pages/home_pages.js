@@ -102,7 +102,7 @@ const [services] = useState([
 useEffect(() => {
   const fetchMajors = async () => {
     try {
-      const response = await fetch('http://stdbackend-production.up.railway.app/api/majorsnames');
+      const response = await fetch('https://stdbackend-production.up.railway.app/api/majorsnames');
       const data = await response.json();
       setSearchMajors(data.majors);
       setFilteredMajors(data.majors);
@@ -134,7 +134,7 @@ const handleSearch = async (e) => {
       degree,
     }).toString();
 
-    const response = await fetch(`http://stdbackend-production.up.railway.app/api/searchuniversities?${query}`);
+    const response = await fetch(`https://stdbackend-production.up.railway.app/api/searchuniversities?${query}`);
     const universities = await response.json();
 
     console.log("Matching universities:", universities);
@@ -161,7 +161,7 @@ const majorOptions = filteredMajors?.map((m) => ({
 
 const fetchNews = async () => {
   try {
-    const response = await fetch("http://stdbackend-production.up.railway.app/api/news");
+    const response = await fetch("https://stdbackend-production.up.railway.app/api/news");
     if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
     console.log(data)
@@ -412,7 +412,7 @@ const handleMajorScroll = (e) => {
 
 const fetchBlogs = async () => {
   try {
-    const response = await fetch("http://stdbackend-production.up.railway.app/api/importantBlogsRoutes");
+    const response = await fetch("https://stdbackend-production.up.railway.app/api/importantBlogsRoutes");
     if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
     if (Array.isArray(data) && data.length > 0) {
