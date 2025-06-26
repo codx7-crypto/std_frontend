@@ -15,7 +15,7 @@ const NewsPage = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/news");
+                const response = await fetch("http://stdbackend-production.up.railway.app/api/news");
                 if (!response.ok) throw new Error("Network response was not ok");
                 const data = await response.json();
                 if (Array.isArray(data) && data.length > 0) {
