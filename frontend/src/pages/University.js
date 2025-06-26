@@ -14,7 +14,7 @@ const University = () => {
   useEffect(() => {
     const fetchUniversity = async () => {
       try {
-        const response = await fetch(`http://stdbackend-production.up.railway.app/api/universities/${id}`);
+        const response = await fetch(`https://stdbackend-production.up.railway.app/api/universities/${id}`);
         const data = await response.json();
         setUniversity(data);
       } catch (error) {
