@@ -12,7 +12,7 @@ const Major = () => {
   useEffect(() => {
     const fetchMajor = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/majors/${id}`);
+        const response = await fetch(`http://stdbackend-production.up.railway.app/api/majors/${id}`);
         const data = await response.json();
         setMajor(data);
       } catch (error) {
