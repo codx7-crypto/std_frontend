@@ -613,7 +613,7 @@ input[type="text"].select::-webkit-calendar-picker-indicator {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 ;
 }
 
 .services-container .header-text {
@@ -877,7 +877,9 @@ input[type="text"].select::-webkit-calendar-picker-indicator {
         min-height: 140px;
         margin:0 2.2em
     }
- 
+    .services-container .nav-btn{
+      display: none;
+    }
 }
 
 
@@ -1612,20 +1614,19 @@ input[type="text"].select::-webkit-calendar-picker-indicator {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 20px;
   align-items: start;
   grid-auto-rows: 360px;
 }
 
 .bloghome-card {
-  background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-  height: 300px;
-  width: 350px;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }

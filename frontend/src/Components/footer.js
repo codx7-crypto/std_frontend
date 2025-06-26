@@ -14,6 +14,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* Logo and Description */}
         <div className="footer-brand">
+          <a href='/'>
           <div className="logo-title">
             <img src={Logo} alt="النورس" />
             <div className="brand-text">
@@ -21,6 +22,7 @@ const Footer = () => {
               <p>حلق لتصل </p>
             </div>
           </div>
+          </a>
           <p className="brand-description">تعتبر النورس شركة رائدة في مجال الخدمات الأكاديمية.</p>
           <div className="brand-nav">
             <Link to="/UniversitiesPage">الجامعات التركية</Link>

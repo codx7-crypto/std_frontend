@@ -97,6 +97,7 @@ const Navbar = () => {
       </div>
       <hr/>
       <div className="navbar-ar-bottom">
+        <a href='/'>
         <div className="navbar-ar-logo">
           {/* Replace with your logo image if needed */}
           <img src={websitelogo} alt="Logo" />
@@ -105,9 +106,9 @@ const Navbar = () => {
               <p style={{ fontSize: '8px' }}>حلق لتصل </p>
           </span>
         </div>
+        </a>
         <nav className="navbar-ar-links">
           <a href="/" className="active">الصفحة الرئيسية</a>
-          <Link to={`/#contact`}><a href="#contact">تواصل معنا</a></Link>
           {/* 
             Improved dropdown logic to prevent "hanging" or stuck dropdowns.
             Uses a small delay (debounce) on mouse leave to avoid flicker and stuck state.
@@ -275,6 +276,7 @@ const Navbar = () => {
           <a href="/NewsPage">الأخبار</a>
           <Link to={`/#services`}><a href="#services">الخدمات</a></Link>
           <Link to={`/#aboutus`}><a href="#aboutus">من نحن</a></Link>
+          <Link to={`/#contact`}><a href="#contact">تواصل معنا</a></Link>
         </nav>
         <div className="navbar-ar-actions">
           <div 
@@ -304,6 +306,7 @@ const Navbar = () => {
       {menuOpen && (
         <div className="mobile-menu active">
           <div className="mobile-menu-header">
+            <a href='/'>
             <div className="mobile-menu-logo">
               <img src={websitelogo} alt="Logo" />
               <span className="brand-text">
@@ -311,6 +314,7 @@ const Navbar = () => {
                 <p style={{ fontSize: '8px' }}>حلق لتصل </p>
                 </span>
             </div>
+            </a>
             <div className="mobile-menu-close" onClick={() => setMenuOpen(false)}>
               <i className="fa fa-times"></i>
             </div>
@@ -318,21 +322,21 @@ const Navbar = () => {
 
           <div className="mobile-menu-links">
             <a href="/">الصفحة الرئيسية</a>
-            <a href="#contact">تواصل معنا</a>
             <a href="/MajorsPage">أهم التخصصات</a>
             <a href="/UniversitiesPage">جامعاتنا</a>
             <a href="/BlogPage">مدونتنا</a>
             <a href="/NewsPage">الأخبار</a>
             <Link to={`/#services`}><a href="#services">الخدمات</a></Link>
             <Link to={`/#aboutus`}><a href="#aboutus">من نحن</a></Link>
+            <a href="#contact">تواصل معنا</a>
           </div>
 
-          <div className="mobile-menu-actions">
+          {/* <div className="mobile-menu-actions">
             <button>كن وكيلاً</button>
             <button>سجل الآن</button>
             <button>تحديد الاهتمامات</button>
             <button>تتبع الطلب</button>
-          </div>
+          </div> */}
         </div>
       )}
       

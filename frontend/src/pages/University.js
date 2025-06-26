@@ -10,6 +10,15 @@ const University = () => {
   const [university, setUniversity] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchUniversity = async () => {
@@ -264,7 +273,7 @@ const University = () => {
               { id: "majors", title: "التخصصات", value: (
                 <div
                   style={{
-                    columnCount: 3,
+                    columnCount: isMobile ? 2 : 3,
                     columnGap: '40px',
                     direction: 'rtl',
                     padding: '10px',
