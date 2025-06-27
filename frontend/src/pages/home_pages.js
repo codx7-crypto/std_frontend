@@ -444,7 +444,7 @@ useEffect(() => {
         playsInline
         className="background-video"
       >
-        <source src="https://drive.google.com/uc?export=download&id=1E-Cq5lrGnuL3oLKy5HdWobVMBbYKNq-G" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dsijn95el/video/upload/v1751035637/qsr9cteknbubatnknep7.mp4" type="video/mp4" />
         
        
       </video>
