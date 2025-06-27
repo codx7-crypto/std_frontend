@@ -2,7 +2,7 @@ import "./contact.css"
 import React, { useRef, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import univirstycampus from "../photos/premium_photo-1682974406944-099e0b2a7ace.jpeg"
+import univirstycampus from "../photos/contact-us.jpg"
 import Select from 'react-select';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -153,8 +153,12 @@ const Contact = () => {
               gap: '0.8em'
             }
           }}>
-            <input type="text" name="name" placeholder="الاسم" required style={{ direction: 'rtl' }} />
-            <input type="text" name="surname" placeholder="اللقب أو الكنية" required style={{ direction: 'rtl' }} />
+            <input type="text" name="name" placeholder="الاسم" required style={{ direction: 'rtl',background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff', }} />
+            <input type="text" name="surname" placeholder="اللقب أو الكنية" required style={{ direction: 'rtl',background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff', }} />
           </div>
           <div className="contact-row" style={{
             '@media (max-width: 768px)': {
@@ -162,7 +166,9 @@ const Contact = () => {
               gap: '0.8em'
             }
           }}>
-            <div className="contact-gender" style={{ direction: 'rtl' }}>
+            <div className="contact-gender" style={{ direction: 'rtl', background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)', color: 'rgba(255, 255, 255, 0.47)'
+                }}>
               <label>الجنس:</label>
               <label><input type="radio" name="gender" value="ذكر" /> ذكر</label>
               <label><input type="radio" name="gender" value="أنثى" /> أنثى</label>
@@ -183,7 +189,7 @@ const Contact = () => {
                   width: '100%',
                   height: '2.5em', 
                   borderRadius: '1em',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
                 }),
                 menu: (base) => ({
                   ...base,
@@ -200,7 +206,18 @@ const Contact = () => {
                     background: 'rgba(255, 255, 255, 0.3)',
                     borderRadius: '4px'
                   }
-                })
+                }),
+                control: (base) => ({
+                  ...base,
+                  minHeight: '2.5em',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  borderRadius:'10px',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.3)'
+                  }
+                }),
               }}
             />
           </div>
@@ -213,11 +230,15 @@ const Contact = () => {
                 name: 'phone',
                 required: true,
                 placeholder: 'رقم الهاتف',
-                style: { width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr' }
+                style: { width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr',background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: 'rgba(255, 255, 255, 0.47)', }
               }}
               containerStyle={{ width: '100%' }}
               inputStyle={{ width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr' }}
-              buttonStyle={{ borderRadius: '1em 0 0 1em' }}
+              buttonStyle={{ borderRadius: '1em 0 0 1em', background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                 }}
             />
           </div>
           <div className="contact-row">
@@ -300,7 +321,8 @@ const Contact = () => {
                 control: (base) => ({
                   ...base,
                   minHeight: '2.5em',
-                  backgroundColor: 'white',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -315,7 +337,9 @@ const Contact = () => {
             />
           </div>
           <div className="contact-row" style={{ direction: 'rtl' }}>
-            <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows={3} required></textarea>
+            <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows={3} required style={{background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff',}}></textarea>
           </div>
           <button type="submit" className="contact-submit" onClick={handleSubmit}
           

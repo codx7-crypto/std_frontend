@@ -2184,83 +2184,76 @@ useEffect(() => {
           </section>
         
           <section style={{
-            padding: '4em',
-            borderRadius: '1rem',
-            margin: '0'
+            padding: '4em 1em', // جعل البادينغ مرنًا على الموبايل
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
           }}>
             <div style={{
+              width: '100%',
               maxWidth: '1200px',
-              margin: '0'
             }}>
               <h2 style={{
                 textAlign: 'center',
                 fontSize: '2em',
                 color: '#1f2937',
-                marginBottom: '0.5em'
+                marginBottom: '0.5em',
+                fontFamily: '"Cairo", sans-serif',
               }}>مدونتنا</h2>
               <p style={{
                 textAlign: 'center',
                 fontSize: '1em',
                 color: '#1f2937',
-                marginBottom: '2em'
-              }}>نبحث عن أكثر المعلومات والمواضيع المفيدة لك في رحلتك التعليمية في تركيا <br/> وننتقي منها كل ما هو مميز ونتيحها لك في مدوناتنا</p>
+                marginBottom: '2em',
+                fontFamily: '"Cairo", sans-serif',
+              }}>
+                نبحث عن أكثر المعلومات والمواضيع المفيدة لك في رحلتك التعليمية في تركيا <br />
+                وننتقي منها كل ما هو مميز ونتيحها لك في مدوناتنا
+              </p>
 
               <div
-              className="bloghome-container"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: '2em',
-                justifyContent: 'center'
-              }}>
+                className="bloghome-container"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: '1.5em',
+                  justifyContent: 'center',
+                }}>
                 {loadingBlogs ? (
                   <div style={{ textAlign: 'center', width: '100%' }}>جاري تحميل المدونات...</div>
                 ) : blogsError ? (
                   <div style={{ textAlign: 'center', width: '100%', color: '#e11d48' }}>{blogsError}</div>
                 ) : blogs.slice(0, 4).map((blog) => (
-                  <div key={blog.id} className="blog-card" style={{width:'100%', height:'100%', background:'transparent'}}>
-                <Link to={`/blog/${blog.id}`}>
-                  <img src={blog.coverimage} alt="cover" className="bloghome-cover" loading="lazy"/>
-                  <h6 className="bloghome-title" style={{
-                    fontSize: '1.2rem',
-                    color: '#333',
-                    textAlign: 'right',
-                    fontFamily: '"Cairo", sans-serif',
-                    direction: 'rtl',
-                    marginBottom:'1em'
-                  }}>{blog.title}</h6>
-                  <p className="bloghome-sammury" style={{
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      maxHeight: '4.5em', // تقريبًا 3 أسطر
-                      direction: 'rtl',
-                      textAlign: 'right',
-                      
-                    }}>
-                    {blog.sammury.split(/(\*\*[^*]+\*\*|==[^=]+==)/g).map((part, i) => {
-                      if (/^\*\*[^*]+\*\*$/.test(part)) {
-                        return <strong key={i}>{part.slice(2, -2)}</strong>; // bold
-                      } else if (/^==[^=]+==$/.test(part)) {
-                        return (
-                          <span key={i} style={{ backgroundColor: '#FFF59D', padding: '0 4px', borderRadius: '3px' }}>
-                            {part.slice(2, -2)}
-                          </span> // highlighted
-                        );
-                      }
-                      return part;
-                    })}
-                  </p>
-
-                  <span className="bloghome-category">{blog.category}</span>
-                </Link>
-              </div>
+                  <div key={blog.id} className="bloghome-card">
+                    <Link to={`/blog/${blog.id}`} style={{ textDecoration: 'none', backgroundColor:'transparent' }}>
+                      <img src={blog.coverimage} alt="cover" className="bloghome-cover" loading="lazy" />
+                      <h6 className="bloghome-title">
+                        {blog.title}
+                      </h6>
+                      <p className="bloghome-sammury">
+                        {blog.sammury.split(/(\*\*[^*]+\*\*|==[^=]+==)/g).map((part, i) => {
+                          if (/^\*\*[^*]+\*\*$/.test(part)) {
+                            return <strong key={i}>{part.slice(2, -2)}</strong>;
+                          } else if (/^==[^=]+==$/.test(part)) {
+                            return (
+                              <span key={i} style={{  padding: '0 4px', borderRadius: '3px' }}>
+                                {part.slice(2, -2)}
+                              </span>
+                            );
+                          }
+                          return part;
+                        })}
+                      </p>
+                      <span className="bloghome-category">{blog.category}</span>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>
           </section>
+
+    
            
 
           <CONTACT id="contact"/>

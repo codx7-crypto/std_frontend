@@ -59,7 +59,7 @@
   .university-card {
     
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgb(206, 206, 206);
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
@@ -70,9 +70,7 @@
   }
   
   .university-card:hover{
-    .university-title{
-      color: #00bfff;
-    }
+    transform: translateY(-5px);
   }
   
   .university-card a {

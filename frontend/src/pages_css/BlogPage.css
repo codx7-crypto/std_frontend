@@ -123,8 +123,8 @@
 .blog-category {
   display: inline-block;
   padding: 4px 8px;
-  background-color: #f5f4f4;
-  border-radius: 4px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
   font-size: 0.9em;
   color: #666;
   margin-top: 2px;
@@ -187,9 +187,8 @@
 }
 
 .blog-card {
-  
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(206, 206, 206);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -284,7 +283,5 @@ a {
 }
 
 .blog-card:hover{
-  .blog-title{
-    color: #00bfff;
-  }
+  transform: translateY(-5px);
 }
