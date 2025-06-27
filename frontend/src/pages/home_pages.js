@@ -50,6 +50,15 @@ const [selectedMajor, setSelectedMajor] = useState('');
 const [language, setLanguage] = useState('');
 const [degree, setDegree] = useState('');
 const location = useLocation();
+const [isMobile, setIsMobile] = useState(window.innerWidth < 750);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 useEffect(() => {
   if (location.hash) {
@@ -164,7 +173,7 @@ const fetchNews = async () => {
     const response = await fetch("https://stdbackend-production.up.railway.app/api/news");
     if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
-    console.log(data)
+    //console.log(data)
     if (Array.isArray(data) && data.length > 0) {
       setDynamicNews(data);
     } else {
@@ -585,7 +594,7 @@ useEffect(() => {
     <section id="aboutus" className="about-section">
       <div className="about-content">
         <h2>
-          <span className="about-highlight">عن</span>  شركه النورس التعليميه
+          <span className="about-highlight">عن</span> شركة النورس التعليمية
         </h2>
         <p>
         بخبرة مستمدة من التجربة والتميّز، تأسست <strong>النورس التعليمية</strong>, لتكون نقطة انطلاق نحو مستقبل أكاديمي واعد للطلاب العرب والدوليين في تركيا. ومنذ انطلاقتها، وضعت النورس في صميم رسالتها أن تكون من المؤسسات الرائدة في تقديم الاستشارات الأكاديمية المتخصصة، ومرافقة الطلاب خطوة بخطوة في رحلتهم التعليمية.
@@ -618,7 +627,7 @@ useEffect(() => {
     >
       <div id="services" className="header-text">
         <h2>خدماتنا</h2>
-        <p>نقدم لك كل ما يسهل رحلتك التعليمية في الجامعات التركية مع نخبة من مستشاري يونايتد التعليمية.</p>
+        <p>نقدم لك كل ما يسهل رحلتك التعليمية في الجامعات التركية مع نخبة من مستشاري النورس التعليمية.</p>
       </div>
       
       <div className="slider-container">
@@ -681,8 +690,8 @@ useEffect(() => {
             اختيارك تركيا لأجل الدراسة يعني أنك اخترت التعليم في واحدة من أكثر دول العالم نمواً و تقدماً وتضمن بذلك، أن تتلقى التعليم من العقول التي أثارت طريق النجاح لملايين الطلاب من حول العالم وتحولت طموحاتهم لقصص نجاح واقعية ....
           </p>
           <Link to="/start_in_turkey">
-  <button className="study-in-turkey-btn">المزيد</button>
-</Link>
+            <button className="study-in-turkey-btn">المزيد</button>
+          </Link>
         </div>
         <div className="study-in-turkey-image">
           <img src={studentgirl} alt="Student" loading="lazy"/>
@@ -695,7 +704,7 @@ useEffect(() => {
       <div className="majores_uni">
 
         {useEffect(() => {
-          const unisPerSection = 4;
+          const unisPerSection = isMobile ? 1 : 4;
           const totalUnis = universities.length;
           const totalSections = Math.ceil(totalUnis / unisPerSection);
 
@@ -703,7 +712,12 @@ useEffect(() => {
 
           const interval = setInterval(() => {
             if (!pauseScroll) {
-              setActiveSlide(prev => (prev + 1) % totalSections);
+              if(!isMobile){
+                setActiveSlide(prev => (prev + 1) % totalSections);
+              }else{
+                setActiveSlide(prev => (prev + 2) % totalSections);
+              }
+              
             }
           }, 3000);
 
@@ -726,13 +740,13 @@ useEffect(() => {
                 alignItems: 'center',
                 width: '100%',
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
               }}
             >
               {
                 (() => {
 
-                  const unisPerSection = 4;
+                  const unisPerSection = isMobile ? 1 : 4;
                   const totalUnis = universities.length;
                   const totalSections = Math.ceil(totalUnis / unisPerSection);
 
@@ -804,7 +818,7 @@ useEffect(() => {
           <div className="slider-dots" style={{ display: 'flex', justifyContent: 'center' }}>
             {(() => {
 
-              const unisPerSection = 4;
+              const unisPerSection = isMobile ? 1 : 4;
               const totalUnis = universities.length;
               const totalSections = Math.ceil(totalUnis / unisPerSection);
 
@@ -1270,7 +1284,7 @@ useEffect(() => {
                 <i className="fas fa-globe-europe" style={{fontSize: '2em', color: '#2563eb', marginBottom: '0.7em'}}></i>
                 <h3 style={{fontWeight: 700, fontSize: '1.2em', marginBottom: '0.5em'}}>تنوع ثقافي وبيئة دولية</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  الجامعات التركية تستقبل طلاباً من أكثر من 150 دولة، مما يخلق بيئة تعليمية غنية ومتنوعة ثقافياً.
+                  الجامعات التركية تستقبل طلاباً من أكثر من 150 دولة، مما يخلق بيئة تعليمية غنية ومتنوعة ثقافياً
                 </p>
               </div>
               <div className="animated-card animated-card-delay-2" style={{
@@ -1285,7 +1299,7 @@ useEffect(() => {
                 <i className="fas fa-certificate" style={{fontSize: '2em', color: '#2563eb', marginBottom: '0.7em'}}></i>
                 <h3 style={{fontWeight: 700, fontSize: '1.2em', marginBottom: '0.5em'}}>اعتراف دولي وجودة تعليمية</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  العديد من الجامعات التركية معترف بها عالمياً وتقدم برامج أكاديمية متطورة ومعتمدة في أوروبا والعالم.
+                  العديد من الجامعات التركية معترف بها عالمياً وتقدم برامج أكاديمية متطورة ومعتمدة في أوروبا والعالم
                 </p>
               </div>
               <div className="animated-card animated-card-delay-3" style={{
@@ -1300,7 +1314,7 @@ useEffect(() => {
                 <i className="fas fa-hand-holding-usd" style={{fontSize: '2em', color: '#2563eb', marginBottom: '0.7em'}}></i>
                 <h3 style={{fontWeight: 700, fontSize: '1.2em', marginBottom: '0.5em'}}>تكاليف مناسبة وفرص منح</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  رسوم الدراسة والمعيشة في تركيا أقل بكثير من معظم الدول الأوروبية، مع توفر العديد من المنح الدراسية للطلاب الدوليين.
+                  رسوم الدراسة والمعيشة في تركيا أقل بكثير من معظم الدول الأوروبية، مع توفر العديد من المنح الدراسية للطلاب الدوليين
                 </p>
               </div>
               <div className="animated-card animated-card-delay-4" style={{
@@ -1315,7 +1329,7 @@ useEffect(() => {
                 <i className="fas fa-university" style={{fontSize: '2em', color: '#2563eb', marginBottom: '0.7em'}}></i>
                 <h3 style={{fontWeight: 700, fontSize: '1.2em', marginBottom: '0.5em'}}>بنية تحتية حديثة</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  الجامعات التركية مجهزة بأحدث المختبرات والمكتبات والمرافق الرياضية، وتوفر بيئة تعليمية متكاملة.
+                  الجامعات التركية مجهزة بأحدث المختبرات والمكتبات والمرافق الرياضية، وتوفر بيئة تعليمية متكاملة
                 </p>
               </div>
               <div className="animated-card animated-card-delay-5" style={{
@@ -1330,7 +1344,7 @@ useEffect(() => {
                 <i className="fas fa-language" style={{fontSize: '2em', color: '#2563eb', marginBottom: '0.7em'}}></i>
                 <h3 style={{fontWeight: 700, fontSize: '1.2em', marginBottom: '0.5em'}}>برامج باللغتين التركية والإنجليزية</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  توفر الجامعات التركية العديد من البرامج الدراسية باللغة الإنجليزية بالإضافة إلى التركية، مما يسهل على الطلاب الأجانب الاندماج.
+                  توفر الجامعات التركية العديد من البرامج الدراسية باللغة الإنجليزية بالإضافة إلى التركية، مما يسهل على الطلاب الأجانب الاندماج
                 </p>
               </div>
               <div className="animated-card animated-card-delay-6" style={{
@@ -1345,7 +1359,7 @@ useEffect(() => {
                 <i className="fas fa-map-marked-alt" style={{fontSize: '2em', color: '#2563eb', marginBottom: '0.7em'}}></i>
                 <h3 style={{fontWeight: 700, fontSize: '1.2em', marginBottom: '0.5em'}}>موقع جغرافي مميز</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  تركيا تجمع بين الشرق والغرب، وتوفر للطلاب فرصة استكشاف ثقافات متنوعة وسهولة السفر لدول أوروبا وآسيا.
+                  تركيا تجمع بين الشرق والغرب، وتوفر للطلاب فرصة استكشاف ثقافات متنوعة وسهولة السفر لدول أوروبا وآسيا
                 </p>
               </div>
             </div>
@@ -1398,7 +1412,7 @@ useEffect(() => {
                 <img src="\universitiesPics\OstimLogo.png" alt="Ostim Teknik Üniversitesi" loading="lazy" style={{width: 60, marginBottom: 16}} />
                 <h3 style={{fontWeight: 700, fontSize: '1.1em', marginBottom: '0.5em'}}>جامعة أوستيم التقنية</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  متخصصة في الهندسة والتكنولوجيا، وتتميز بشراكاتها الصناعية القوية مع منطقة أوستيم الصناعية، مما يوفر فرص تدريب وتوظيف مميزة للطلاب في مجالات الهندسة الميكانيكية، الكهربائية، والإلكترونية.
+                  متخصصة في الهندسة والتكنولوجيا، وتتميز بشراكاتها الصناعية القوية مع منطقة أوستيم الصناعية، مما يوفر فرص تدريب وتوظيف مميزة للطلاب في مجالات الهندسة الميكانيكية، الكهربائية، والإلكترونية
                 </p>
               </div>
               <div className="animated-card animated-card-delay-2" style={{
@@ -1413,7 +1427,7 @@ useEffect(() => {
                 <img src="/universitiesPics/midipol4.png" alt="Istanbul Medipol University" loading="lazy" style={{width: 60, marginBottom: 16}} />
                 <h3 style={{fontWeight: 700, fontSize: '1.1em', marginBottom: '0.5em'}}>جامعة إسطنبول ميديبول</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  رائدة في التخصصات الطبية والصحية، وتضم مستشفيات جامعية حديثة تتيح للطلاب التدريب العملي المباشر في الطب وطب الأسنان والصيدلة.
+                  رائدة في التخصصات الطبية والصحية، وتضم مستشفيات جامعية حديثة تتيح للطلاب التدريب العملي المباشر في الطب وطب الأسنان والصيدلة
                 </p>
               </div>
               <div className="animated-card animated-card-delay-3" style={{
@@ -1428,7 +1442,7 @@ useEffect(() => {
                 <img src="/universitiesPics/bikent4.png" alt="Bilkent University" loading="lazy" style={{width: 60, marginBottom: 16}} />
                 <h3 style={{fontWeight: 700, fontSize: '1.1em', marginBottom: '0.5em'}}>جامعة بيلكنت</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  من أفضل الجامعات البحثية في تركيا، مشهورة في مجالات الهندسة والعلوم الطبيعية، وتحتل مراكز متقدمة في التصنيفات العالمية.
+                  من أفضل الجامعات البحثية في تركيا، مشهورة في مجالات الهندسة والعلوم الطبيعية، وتحتل مراكز متقدمة في التصنيفات العالمية
                 </p>
               </div>
               <div className="animated-card animated-card-delay-4" style={{
@@ -1443,7 +1457,7 @@ useEffect(() => {
                 <img src="/universitiesPics/bilgi4.png" alt="Istanbul Bilgi University" loading="lazy" style={{width: 60, marginBottom: 16}} />
                 <h3 style={{fontWeight: 700, fontSize: '1.1em', marginBottom: '0.5em'}}>جامعة إسطنبول بيلجي</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  معروفة بقوة برامجها في إدارة الأعمال والعلوم الاجتماعية، وتوفر بيئة تعليمية حديثة وعلاقات دولية واسعة.
+                  معروفة بقوة برامجها في إدارة الأعمال والعلوم الاجتماعية، وتوفر بيئة تعليمية حديثة وعلاقات دولية واسعة
                 </p>
               </div>
               <div className="animated-card animated-card-delay-5" style={{
@@ -1458,7 +1472,7 @@ useEffect(() => {
                 <img src="/universitiesPics/ankaraolum4.png" alt="Ankara University" loading="lazy" style={{width: 60, marginBottom: 16}} />
                 <h3 style={{fontWeight: 700, fontSize: '1.1em', marginBottom: '0.5em'}}>جامعة أنقرة للعلوم</h3>
                 <p style={{textAlign: 'right', color: '#334155'}}>
-                  من أعرق الجامعات الحكومية، وتتميز في تخصصات القانون والعلوم السياسية واللغات، وتعد مركزاً أكاديمياً مرموقاً في تركيا.
+                  من أعرق الجامعات الحكومية، وتتميز في تخصصات القانون والعلوم السياسية واللغات، وتعد مركزاً أكاديمياً مرموقاً في تركيا
                 </p>
               </div>
             </div>

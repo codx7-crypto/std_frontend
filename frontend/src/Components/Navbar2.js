@@ -85,13 +85,12 @@ const Navbar = () => {
     <header className={`navbar-ar ${scrolled ? 'scrolled' : ''}`} dir="rtl">
       <div className="navbar-ar-top">
         <div className="navbar-ar-social">
-          <a href="/"><i className="fab fa-tiktok"></i></a>
-          <a href="/"><i className="fab fa-youtube"></i></a>
-          <a href="/"><i className="fab fa-snapchat"></i></a>
-          <a href="/"><i className="fab fa-instagram"></i></a>
+          <a href="/"><i className="fab fa-telegram-plane"></i></a>
           <a href="/"><i className="fab fa-linkedin"></i></a>
           <a href="/"><i className="fab fa-x-twitter"></i></a>
+          <a href="/"><i className="fab fa-instagram"></i></a>
           <a href="/"><i className="fab fa-facebook"></i></a>
+          <a href="/"><i className="fas fa-envelope"></i></a>
         </div>
         
       </div>

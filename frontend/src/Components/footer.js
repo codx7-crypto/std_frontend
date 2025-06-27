@@ -71,9 +71,9 @@ const Footer = () => {
           <h3>تابعنا على</h3>
           <div className="social-icons">
             <a href="https://web.telegram.org/" aria-label="Telegram" target="_blank"><FaTelegram /></a>
-            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"><FaInstagram /></a>
             <a href="http://linkedin.com/" aria-label="LinkedIn" target="_blank"><FaLinkedin /></a>
             <a href="http://linkedin.com/" aria-label="Twitter" target="_blank"><FaXTwitter /></a>
+            <a href="https://www.instagram.com/" aria-label="Instagram" target="_blank"><FaInstagram /></a>
             <a href="https://www.facebook.com/" aria-label="Facebook" target="_blank"><FaFacebookF /></a>
             <a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRqhklLvzMGbLPlpWTJMXznBmNgBgzTNhWwSGqTfxVwvzFdSkTQSCSGkkGvCGdpQLqPvBGq" aria-label="Email" target="_blank"><MdEmail /></a>
           </div>

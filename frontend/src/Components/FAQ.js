@@ -42,7 +42,8 @@ const FAQ = () => {
       // background: '#f8fafc',
       // borderRadius: '2em',
       // boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-      position: 'relative'
+      position: 'relative',
+      direction:'rtl'
     }}>
       <h1 style={{
         fontSize: '2.5em',
@@ -83,11 +84,11 @@ const FAQ = () => {
             key={index}
             onClick={() => toggleFAQ(index)}
             style={{
-              background: 'white',
+              
               borderRadius: '1em',
               padding: '1em',
               cursor: 'pointer',
-              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+              border: '1px solid #e2e8f0',
               transition: 'all 0.3s ease'
             }}
           >

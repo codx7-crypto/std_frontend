@@ -1427,6 +1427,17 @@ input[type="text"].select::-webkit-calendar-picker-indicator {
     }
 }
 
+/* For smooth scroll on mobile */
+.universities-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.universities-grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
 /* Add these new styles for the dots navigation */
 .slider-dots {
     display: flex;
