@@ -274,9 +274,8 @@ const University = () => {
                 <div
                   style={{
                     columnCount: isMobile ? 2 : 3,
-                    columnGap: '40px',
+                    columnGap: '15px',
                     direction: 'rtl',
-                    padding: '10px',
                   }}
                 >
                   {(() => {
