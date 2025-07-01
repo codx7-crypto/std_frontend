@@ -2,20 +2,18 @@ import "./contact.css"
 import React, { useRef, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import univirstycampus from "../photos/contact-us.jpg"
+import univirstycampus from "../photos/premium_photo-1682974406944-099e0b2a7ace.jpeg"
 import Select from 'react-select';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 const Contact = () => {
   const formRef = useRef();
   const [phone, setPhone] = useState('');
+  const [showPhoneError, setShowPhoneError] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedUniversity, setSelectedUniversity] = useState(null);
-
-
 
   const countryOptions = [
     // 🟢 الدول العربية أولاً
@@ -41,7 +39,6 @@ const Contact = () => {
     { value: 'djibouti', label: 'جيبوتي' },
     { value: 'comoros', label: 'جزر القمر' },
     { value: 'mauritania', label: 'موريتانيا' },
-  
     // 🔵 باقي الدول
     { value: 'turkey', label: 'تركيا' },
     { value: 'pakistan', label: 'باكستان' },
@@ -83,24 +80,30 @@ const Contact = () => {
     { value: 'other', label: 'اخر' }
   ];
 
+  // Helper: Check if phone is valid (at least 8 digits, can be improved)
+  const isPhoneValid = (phone) => {
+    // Remove non-digit chars, check length
+    const digits = phone.replace(/\D/g, '');
+    return digits.length >= 8;
+  };
 
-
-  // داخل الدالة onClick
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    const formData = new FormData(e.target.form);
+
+    if (!phone || !isPhoneValid(phone)) {
+      setShowPhoneError(true);
+      return;
+    } else {
+      setShowPhoneError(false);
+    }
+
+    const formData = new FormData(e.target.form || formRef.current);
     const name = formData.get('name');
     const surname = formData.get('surname');
     const email = formData.get('email');
-    const phoneNumber = phone.current?.value || phone; // حسب مكان حفظك للـ phone
+    const phoneNumber = phone;
     const message = formData.get('message');
-    
 
-    // const selectedCountry = countryOptions.find(opt => opt.value === formData.get('country'))?.label || '';
-    // const selectedUniversity = universityOptions.find(opt => opt.value === formData.get('university'))?.label || '';
-
-  
     const templateParams = {
       name,
       surname,
@@ -109,10 +112,8 @@ const Contact = () => {
       country: selectedCountry?.label || "لم يتم التحديد",
       university: selectedUniversity?.label || "لم يتم التحديد",
       message,
-      
-
     };
-  
+
     emailjs.send(
       'service_iaqxmhn',         // Service ID
       'template_7ml3i4d',        // 🔁 استبدله بـ Template ID الحقيقي
@@ -126,11 +127,6 @@ const Contact = () => {
       console.error('FAILED', err);
     });
   };
-
-
-
-
-
 
   return (
     <section className="contact-new-shape" id="contact" style={{
@@ -153,12 +149,8 @@ const Contact = () => {
               gap: '0.8em'
             }
           }}>
-            <input type="text" name="name" placeholder="الاسم" required style={{ direction: 'rtl',background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#fff', }} />
-            <input type="text" name="surname" placeholder="اللقب أو الكنية" required style={{ direction: 'rtl',background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#fff', }} />
+            <input type="text" name="name" placeholder="الاسم" required style={{ direction: 'rtl' }} />
+            <input type="text" name="surname" placeholder="اللقب أو الكنية" required style={{ direction: 'rtl' }} />
           </div>
           <div className="contact-row" style={{
             '@media (max-width: 768px)': {
@@ -166,9 +158,7 @@ const Contact = () => {
               gap: '0.8em'
             }
           }}>
-            <div className="contact-gender" style={{ direction: 'rtl', background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)', color: 'rgba(255, 255, 255, 0.47)'
-                }}>
+            <div className="contact-gender" style={{ direction: 'rtl' }}>
               <label>الجنس:</label>
               <label><input type="radio" name="gender" value="ذكر" /> ذكر</label>
               <label><input type="radio" name="gender" value="أنثى" /> أنثى</label>
@@ -189,7 +179,7 @@ const Contact = () => {
                   width: '100%',
                   height: '2.5em', 
                   borderRadius: '1em',
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.3s ease'
                 }),
                 menu: (base) => ({
                   ...base,
@@ -206,40 +196,40 @@ const Contact = () => {
                     background: 'rgba(255, 255, 255, 0.3)',
                     borderRadius: '4px'
                   }
-                }),
-                control: (base) => ({
-                  ...base,
-                  minHeight: '2.5em',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  borderRadius:'10px',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    borderColor: 'rgba(255, 255, 255, 0.3)'
-                  }
-                }),
+                })
               }}
             />
           </div>
           <div className="contact-row">
-            <PhoneInput   required
+            <PhoneInput  
               country={'tr'}
               value={phone}
-              onChange={setPhone}
+              onChange={value => {
+                setPhone(value);
+                if (showPhoneError) setShowPhoneError(false);
+              }}
               inputProps={{
                 name: 'phone',
                 required: true,
                 placeholder: 'رقم الهاتف',
-                style: { width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr',background: 'rgba(255, 255, 255, 0.1)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  color: 'rgba(255, 255, 255, 0.47)', }
+                style: { width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr' }
               }}
               containerStyle={{ width: '100%' }}
-              inputStyle={{ width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr' }}
-              buttonStyle={{ borderRadius: '1em 0 0 1em', background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                 }}
+              inputStyle={{
+                width: '100%',
+                borderRadius: '1em',
+                fontSize: '1em',
+                direction: 'ltr',
+                border: showPhoneError ? '2px solid #e53e3e' : undefined,
+                background: showPhoneError ? '#fff5f5' : undefined
+              }}
+              buttonStyle={{ borderRadius: '1em 0 0 1em' }}
             />
+            {showPhoneError && (
+              <div style={{ color: '#e53e3e', fontSize: '0.95em', marginTop: '0.5em', textAlign: 'right', width: '100%' }}>
+                رقم الهاتف مطلوب
+              </div>
+            )}
           </div>
           <div className="contact-row">
             <input
@@ -321,8 +311,7 @@ const Contact = () => {
                 control: (base) => ({
                   ...base,
                   minHeight: '2.5em',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                  backgroundColor: 'white',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -337,45 +326,15 @@ const Contact = () => {
             />
           </div>
           <div className="contact-row" style={{ direction: 'rtl' }}>
-            <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows={3} required style={{background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: '#fff',}}></textarea>
+            <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows={3} required></textarea>
           </div>
-          <button type="submit" className="contact-submit" onClick={handleSubmit}
-          
-          
-          // onClick={(e) => {
-            
-          //   e.preventDefault();
-          //   const formData = new FormData(e.target.form);
-          //   const email = formData.get('email');
-            
-          //   const messageData = {
-          //     name: formData.get('name'),
-          //     email: email,
-          //     phone: formData.get('phone'),
-          //     message: formData.get('message')
-          //   };
-
-          //   if (email) {
-          //     // If email exists, send via mailto
-          //     const subject = "رسالة جديدة من موقع النورس";
-          //     const body = `
-          //       الاسم: ${messageData.name}
-          //       البريد الإلكتروني: ${messageData.email}
-          //       رقم الهاتف: ${messageData.phone}
-          //       الرسالة: ${messageData.message}
-          //     `;
-          //     window.location.href = `mailto:alnawras.turkey@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-          //   } else {
-          //     // If no email, this will be replaced with backend API call later
-          //     console.log('No email provided - Backend submission will be implemented here', messageData);
-          //     alert('سيتم تفعيل إرسال الرسائل قريباً');
-          //   } 
-            
-          // }}     
-          
-          >إرسال</button>
+          <button
+            type="submit"
+            className="contact-submit"
+            onClick={handleSubmit}
+          >
+            إرسال
+          </button>
         </form>
       </div>
       <div className="contact-glass-card animated-fade-in" style={{
