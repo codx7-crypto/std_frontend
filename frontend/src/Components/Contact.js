@@ -2,7 +2,7 @@ import "./contact.css"
 import React, { useRef, useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import univirstycampus from "../photos/premium_photo-1682974406944-099e0b2a7ace.jpeg"
+import univirstycampus from "../photos/contact-us.jpg"
 import Select from 'react-select';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
