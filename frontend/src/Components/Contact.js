@@ -222,7 +222,7 @@ const Contact = () => {
             />
           </div>
           <div className="contact-row">
-            <PhoneInput
+            <PhoneInput   required
               country={'tr'}
               value={phone}
               onChange={setPhone}
