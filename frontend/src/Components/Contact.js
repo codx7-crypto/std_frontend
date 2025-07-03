@@ -82,7 +82,6 @@ const Contact = () => {
 
   // Helper: Check if phone is valid (at least 8 digits, can be improved)
   const isPhoneValid = (phone) => {
-    // Remove non-digit chars, check length
     const digits = phone.replace(/\D/g, '');
     return digits.length >= 8;
   };
@@ -149,8 +148,12 @@ const Contact = () => {
               gap: '0.8em'
             }
           }}>
-            <input type="text" name="name" placeholder="الاسم" required style={{ direction: 'rtl' }} />
-            <input type="text" name="surname" placeholder="اللقب أو الكنية" required style={{ direction: 'rtl' }} />
+            <input type="text" name="name" placeholder="الاسم" required style={{ direction: 'rtl',background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff', }} />
+            <input type="text" name="surname" placeholder="اللقب أو الكنية" required style={{ direction: 'rtl',background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff', }} />
           </div>
           <div className="contact-row" style={{
             '@media (max-width: 768px)': {
@@ -158,7 +161,9 @@ const Contact = () => {
               gap: '0.8em'
             }
           }}>
-            <div className="contact-gender" style={{ direction: 'rtl' }}>
+            <div className="contact-gender" style={{ direction: 'rtl', background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)', color: 'rgba(255, 255, 255, 0.47)'
+                }}>
               <label>الجنس:</label>
               <label><input type="radio" name="gender" value="ذكر" /> ذكر</label>
               <label><input type="radio" name="gender" value="أنثى" /> أنثى</label>
@@ -179,7 +184,7 @@ const Contact = () => {
                   width: '100%',
                   height: '2.5em', 
                   borderRadius: '1em',
-                  transition: 'all 0.3s ease'
+                  transition: 'all 0.3s ease',
                 }),
                 menu: (base) => ({
                   ...base,
@@ -196,12 +201,24 @@ const Contact = () => {
                     background: 'rgba(255, 255, 255, 0.3)',
                     borderRadius: '4px'
                   }
-                })
+                }),
+                control: (base) => ({
+                  ...base,
+                  minHeight: '2.5em',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  borderRadius:'10px',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderColor: 'rgba(255, 255, 255, 0.3)'
+                  }
+                }),
               }}
             />
           </div>
           <div className="contact-row">
-            <PhoneInput  
+            <PhoneInput
+              required
               country={'tr'}
               value={phone}
               onChange={value => {
@@ -212,7 +229,9 @@ const Contact = () => {
                 name: 'phone',
                 required: true,
                 placeholder: 'رقم الهاتف',
-                style: { width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr' }
+                style: { width: '100%', borderRadius: '1em', fontSize: '1em', direction: 'ltr',background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: 'rgba(255, 255, 255, 0.47)', }
               }}
               containerStyle={{ width: '100%' }}
               inputStyle={{
@@ -223,7 +242,9 @@ const Contact = () => {
                 border: showPhoneError ? '2px solid #e53e3e' : undefined,
                 background: showPhoneError ? '#fff5f5' : undefined
               }}
-              buttonStyle={{ borderRadius: '1em 0 0 1em' }}
+              buttonStyle={{ borderRadius: '1em 0 0 1em', background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                 }}
             />
             {showPhoneError && (
               <div style={{ color: '#e53e3e', fontSize: '0.95em', marginTop: '0.5em', textAlign: 'right', width: '100%' }}>
@@ -311,7 +332,8 @@ const Contact = () => {
                 control: (base) => ({
                   ...base,
                   minHeight: '2.5em',
-                  backgroundColor: 'white',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   '&:hover': {
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -326,15 +348,12 @@ const Contact = () => {
             />
           </div>
           <div className="contact-row" style={{ direction: 'rtl' }}>
-            <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows={3} required></textarea>
+            <textarea name="message" placeholder="كيف يمكننا مساعدتك؟" rows={3} required style={{background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                color: '#fff',}}></textarea>
           </div>
-          <button
-            type="submit"
-            className="contact-submit"
-            onClick={handleSubmit}
-          >
-            إرسال
-          </button>
+          <button type="submit" className="contact-submit" onClick={handleSubmit}
+          >إرسال</button>
         </form>
       </div>
       <div className="contact-glass-card animated-fade-in" style={{
@@ -394,7 +413,7 @@ const Contact = () => {
               }
             }}>
               <i className="fas fa-envelope" style={{color: '#2563eb', fontSize: '1.2em'}}></i>
-              <a href="mailto:info@unitededucation.com.tr" 
+              <a href="mailto:alnawras.turkey@gmail.com" 
                 style={{
                   color: '#1e293b',
                   textDecoration: 'none',
@@ -424,7 +443,7 @@ const Contact = () => {
               }
             }}>
               <i className="fas fa-phone" style={{color: '#2563eb', fontSize: '1.2em'}}></i>
-              <a href="tel:00902129123999"
+              <a href="tel:00905063158511"
                 style={{
                   color: '#1e293b',
                   textDecoration: 'none',
@@ -437,7 +456,7 @@ const Contact = () => {
                 onMouseOver={(e) => e.target.style.color = '#2563eb'}
                 onMouseOut={(e) => e.target.style.color = '#1e293b'}
               >
-                0090212912399
+                00905063158511
               </a>
             </div>
             <div className="contact-item" style={{
@@ -454,7 +473,7 @@ const Contact = () => {
               }
             }}>
               <i className="fas fa-map-marker-alt" style={{color: '#2563eb', fontSize: '1.2em'}}></i>
-              <span style={{color: '#1e293b', fontSize: '1.1em'}}>تركيا، اسطنبول</span>
+              <span style={{color: '#1e293b', fontSize: '1.1em'}}>تركيا، انقره</span>
             </div>
           </div>
         </div>
