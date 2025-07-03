@@ -94,10 +94,10 @@ const [services] = useState([
         title: "خدمات السكن الطلابي",
         description: "نساعدك في العثور على السكن المناسب مع توفير كافة الخدمات اللازمة من تأثيث وصيانة وخدمات الإنترنت"
     },
-    {
+     {
         id: 5,
         icon: "📚",
-        title: "الإرشاد الأكاديمي",
+        title: "الارشاد الاكاديمي (مجاني)",
         description: "نقدم خدمات الإرشاد الأكاديمي الشامل لمساعدتك في اختيار التخصص المناسب والجامعة المثالية لتحقيق أهدافك"
     },
     {
@@ -105,7 +105,12 @@ const [services] = useState([
         icon: "🔤",
         title: "خدمات الترجمة",
         description: "نوفر خدمات ترجمة معتمدة لكافة الوثائق والمستندات المطلوبة للدراسة في تركيا"
-    }
+    } {
+        id: 7,
+        icon: "📝",
+        title: "المساعده في التسجيل الجامعي (مجاني)",
+        description: "نقدم لك الدعم الكامل في جميع خطوات التسجيل الجامعي مجانًا، من اختيار الجامعة حتى إتمام عملية التقديم بنجاح."
+    },
 ]);
 
 useEffect(() => {
@@ -283,11 +288,11 @@ useEffect(() => {
       image: "/majors/23.png",
       degree: "التخصصات الهندسية"
     },
-    {
-      id: 27,
-      name: "تخصص علم النفس",
-      image: "/majors/27.png",
-      degree: "العلوم الاجتماعية والإنسانية"
+   {
+      id: 1,
+      name: "تخصص إدارة الأعمال",
+      image: "/majors/1.png",
+      degree: "تخصصات العلوم الإدارية"
     }
   ]);
 }, []);
@@ -1909,8 +1914,7 @@ useEffect(() => {
               </div>
             </div>
           </section>
-
-          <section
+ <section
             className="pricing-section animated-card"
             style={{
               // background: 'linear-gradient(120deg, #e0e7ff 70%, #f8fafc 100%)',
@@ -1977,7 +1981,7 @@ useEffect(() => {
                   fontSize: '0.9em',
                   fontWeight: 500
                 }}>
-                  برونزي
+                  مجانية
                 </div>
                 <div style={{
                   fontSize: '2.5em',
@@ -1987,7 +1991,7 @@ useEffect(() => {
                   marginTop: '1em',
                   marginBottom: '0.2em'
                 }}>
-                  $199
+                  $0
                 </div>
                 <ul style={{
                   listStyle: 'none',
@@ -1996,11 +2000,13 @@ useEffect(() => {
                   flex: 1
                 }}>
                   {[
-                    'خدمة استشارية',
-                    'مساعدة في اختيار التخصص',
-                    'مساعدة في اختيار الجامعة',
-                    'متابعة التقديم',
-                    'متابعة القبول'
+                    'استخراج القبول',
+                    'استشاره اكاديميه',
+                    'مساعده في اختيار التخصص',
+                    'مساعده في اختيار الجامعه',
+                    'متابعه القبول',
+                    'متابعه التقديم',
+                    'مساعده في اختبارات القبول'
                   ].map((feature, index) => (
                     <li key={index} style={{
                       display: 'flex',
@@ -2013,23 +2019,79 @@ useEffect(() => {
                     </li>
                   ))}  
                   <li style={{margin: '0.8em 0', display: 'flex', alignItems: 'center', gap: '0.5em'}}>
-                    <span>✓</span>
-                    <span>خدمة VIP أساسية</span>
+                    {/* <span>✓</span> */}
+                    {/* <span>خدمة VIP أساسية</span> */}
                   </li>
                 </ul>
                 <div style={{
                   marginTop: '1em',
-                  textAlign: 'center' 
+                  textAlign: 'center',
+                  position: 'relative',
+                  display: 'inline-block'
                 }}>
-                  <button className="btn btn-primary" style={{
-                    background: 'linear-gradient(135deg, #2563eb 60%, #818cf8 100%)',
-                    color: 'white',
-                    padding: '0.5em 1em',
-                    borderRadius: '0.5em',
-                    cursor: 'pointer'
-                  }}>
-                    اشتراك
-                  </button>
+                  <div className="subscription-tooltip-wrapper" style={{display: 'inline-block', position: 'relative'}}>
+                    <button
+                      className="btn btn-primary"
+                      style={{
+                        background: 'linear-gradient(135deg, #2563eb 60%, #818cf8 100%)',
+                        color: 'white',
+                        padding: '0.5em 1em',
+                        borderRadius: '0.5em',
+                        cursor: 'pointer'
+                      }}
+                      onMouseEnter={e => {
+                        const tooltip = e.currentTarget.nextSibling;
+                        tooltip.style.opacity = 1;
+                        tooltip.style.visibility = 'visible';
+                      }}
+                      onMouseLeave={e => {
+                        const tooltip = e.currentTarget.nextSibling;
+                        tooltip.style.opacity = 0;
+                        tooltip.style.visibility = 'hidden';
+                      }}
+                    >
+                      اشتراك
+                    </button>
+                    <div
+                      className="subscription-tooltip"
+                      style={{
+                        position: 'absolute',
+                        bottom: '110%',
+                        right: '50%',
+                        transform: 'translateX(50%)',
+                        background: '#fff',
+                        color: '#1e293b',
+                        border: '1px solid #2563eb',
+                        borderRadius: '0.5em',
+                        padding: '0.5em 0.8em',
+                        fontSize: '0.85em',
+                        boxShadow: '0 2px 8px rgba(30, 64, 175, 0.10)',
+                        whiteSpace: 'normal',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        transition: 'opacity 0.2s, visibility 0.2s',
+                        zIndex: 10,
+                        pointerEvents: 'none',
+                        direction: 'rtl',
+                        textAlign: 'right',
+                        lineHeight: 1.7,
+                        minWidth: '180px',
+                        maxWidth: '240px'
+                      }}
+                    >
+                      <div style={{
+                        fontWeight: 700,
+                        marginBottom: '0.4em',
+                        fontSize: '1em',
+                        color: '#dc2626'
+                      }}>
+                        غير متوفر حالياً
+                      </div>
+                      <div>
+                        إذا كنت ترغب بالاشتراك، يرجى زيارة قسم التواصل.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -2068,7 +2130,7 @@ useEffect(() => {
                   marginTop: '1em',
                   marginBottom: '0.2em'
                 }}>
-                  $299
+                  $99
                 </div>
                 <ul style={{
                   listStyle: 'none',
@@ -2077,10 +2139,12 @@ useEffect(() => {
                   flex: 1
                 }}>
                   {[
-                    'كل مميزات الباقة البرونزية',
+                    'كل مميزات الباقة المجانيه',
                     'خدمة الترجمة',
                     'متابعة إجراءات السفر',
-                    'المساعدة في حجز السكن',
+                    'المساعدة في التقديم على الإقامة',
+                    'المساعدة في التأمين الصحي',
+                    'المساعدة في استخراج (بطاقة المواصلات، البنك، SIM)',
                     'خدمة استقبال المطار'
                   ].map((feature, index) => (
                     <li key={index} style={{
@@ -2094,23 +2158,79 @@ useEffect(() => {
                     </li>
                   ))}
                   <li style={{margin: '0.8em 0', display: 'flex', alignItems: 'center', gap: '0.5em'}}>
-                    <span>✓</span>
-                    <span>خدمة VIP متقدمة</span>
+                    {/* <span>✓</span>
+                    <span>خدمة VIP متقدمة</span> */}
                   </li>
                 </ul>
                 <div style={{
                   marginTop: '1em',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  position: 'relative',
+                  display: 'inline-block'
                 }}>
-                  <button className="btn btn-primary" style={{
-                    background: 'linear-gradient(135deg, #2563eb 60%, #818cf8 100%)',
-                    color: 'white',
-                    padding: '0.5em 1em',
-                    borderRadius: '0.5em',
-                    cursor: 'pointer'
-                  }}>
-                    اشتراك
-                  </button>
+                  <div className="subscription-tooltip-wrapper" style={{display: 'inline-block', position: 'relative'}}>
+                    <button
+                      className="btn btn-primary"
+                      style={{
+                        background: 'linear-gradient(135deg, #2563eb 60%, #818cf8 100%)',
+                        color: 'white',
+                        padding: '0.5em 1em',
+                        borderRadius: '0.5em',
+                        cursor: 'pointer'
+                      }}
+                      onMouseEnter={e => {
+                        const tooltip = e.currentTarget.nextSibling;
+                        tooltip.style.opacity = 1;
+                        tooltip.style.visibility = 'visible';
+                      }}
+                      onMouseLeave={e => {
+                        const tooltip = e.currentTarget.nextSibling;
+                        tooltip.style.opacity = 0;
+                        tooltip.style.visibility = 'hidden';
+                      }}
+                    >
+                      اشتراك
+                    </button>
+                    <div
+                      className="subscription-tooltip"
+                      style={{
+                        position: 'absolute',
+                        bottom: '110%',
+                        right: '50%',
+                        transform: 'translateX(50%)',
+                        background: '#fff',
+                        color: '#1e293b',
+                        border: '1px solid #2563eb',
+                        borderRadius: '0.5em',
+                        padding: '0.5em 0.8em',
+                        fontSize: '0.85em',
+                        boxShadow: '0 2px 8px rgba(30, 64, 175, 0.10)',
+                        whiteSpace: 'normal',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        transition: 'opacity 0.2s, visibility 0.2s',
+                        zIndex: 10,
+                        pointerEvents: 'none',
+                        direction: 'rtl',
+                        textAlign: 'right',
+                        lineHeight: 1.7,
+                        minWidth: '180px',
+                        maxWidth: '240px'
+                      }}
+                    >
+                      <div style={{
+                        fontWeight: 700,
+                        marginBottom: '0.4em',
+                        fontSize: '1em',
+                        color: '#dc2626'
+                      }}>
+                        غير متوفر حالياً
+                      </div>
+                      <div>
+                        إذا كنت ترغب بالاشتراك، يرجى زيارة قسم التواصل.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -2149,7 +2269,7 @@ useEffect(() => {
                   marginTop: '1em',
                   marginBottom: '0.2em'
                 }}>
-                  $499
+                  $249
                 </div>
                 <ul style={{
                   listStyle: 'none',
@@ -2159,9 +2279,10 @@ useEffect(() => {
                 }}>
                   {[
                     'كل مميزات الباقة الفضية',
-                    'خدمة المرافق الشخصي',
-                    'المساعدة في فتح حساب بنكي',
-                    'خدمة التأمين الصحي',
+                    // 'خدمة المرافق الشخصي',
+                    'المساعدة في حجز الطيران',
+                    'المرافقة في الجامعة',
+                    'المساعدة في البحث عن السكن',
                     'دعم على مدار 24/7'
                   ].map((feature, index) => (
                     <li key={index} style={{
@@ -2175,27 +2296,84 @@ useEffect(() => {
                     </li>
                   ))}
                   <li style={{margin: '0.8em 0', display: 'flex', alignItems: 'center', gap: '0.5em'}}>
-                    <span>✓</span>
-                    <span>خدمة VIP شاملة</span>
+                    {/* <span>✓</span>
+                    <span>خدمة VIP شاملة</span> */}
                   </li>
                 </ul>
                 <div style={{
                   marginTop: '1em',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  position: 'relative',
+                  display: 'inline-block'
                 }}>
-                  <button className="btn btn-primary" style={{
-                    background: 'linear-gradient(135deg, #2563eb 60%, #818cf8 100%)',
-                    color: 'white',
-                    padding: '0.5em 1em',
-                    borderRadius: '0.5em',
-                    cursor: 'pointer'
-                  }}>
-                    اشتراك
-                  </button>
+                  <div className="subscription-tooltip-wrapper" style={{display: 'inline-block', position: 'relative'}}>
+                    <button
+                      className="btn btn-primary"
+                      style={{
+                        background: 'linear-gradient(135deg, #2563eb 60%, #818cf8 100%)',
+                        color: 'white',
+                        padding: '0.5em 1em',
+                        borderRadius: '0.5em',
+                        cursor: 'pointer'
+                      }}
+                      onMouseEnter={e => {
+                        const tooltip = e.currentTarget.nextSibling;
+                        tooltip.style.opacity = 1;
+                        tooltip.style.visibility = 'visible';
+                      }}
+                      onMouseLeave={e => {
+                        const tooltip = e.currentTarget.nextSibling;
+                        tooltip.style.opacity = 0;
+                        tooltip.style.visibility = 'hidden';
+                      }}
+                    >
+                      اشتراك
+                    </button>
+                    <div
+                      className="subscription-tooltip"
+                      style={{
+                        position: 'absolute',
+                        bottom: '110%',
+                        right: '50%',
+                        transform: 'translateX(50%)',
+                        background: '#fff',
+                        color: '#1e293b',
+                        border: '1px solid #2563eb',
+                        borderRadius: '0.5em',
+                        padding: '0.5em 0.8em',
+                        fontSize: '0.85em',
+                        boxShadow: '0 2px 8px rgba(30, 64, 175, 0.10)',
+                        whiteSpace: 'normal',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        transition: 'opacity 0.2s, visibility 0.2s',
+                        zIndex: 10,
+                        pointerEvents: 'none',
+                        direction: 'rtl',
+                        textAlign: 'right',
+                        lineHeight: 1.7,
+                        minWidth: '180px',
+                        maxWidth: '240px'
+                      }}
+                    >
+                      <div style={{
+                        fontWeight: 700,
+                        marginBottom: '0.4em',
+                        fontSize: '1em',
+                        color: '#dc2626'
+                      }}>
+                        غير متوفر حالياً
+                      </div>
+                      <div>
+                        إذا كنت ترغب بالاشتراك، يرجى زيارة قسم التواصل.
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </section>
+        
         
           <section style={{
             padding: '4em 1em', // جعل البادينغ مرنًا على الموبايل
@@ -2220,12 +2398,8 @@ useEffect(() => {
                 fontSize: '1em',
                 color: '#1f2937',
                 marginBottom: '2em',
-                fontFamily: '"Cairo", sans-serif',
-              }}>
-                نبحث عن أكثر المعلومات والمواضيع المفيدة لك في رحلتك التعليمية في تركيا <br />
-                وننتقي منها كل ما هو مميز ونتيحها لك في مدوناتنا
-              </p>
-
+                direction: 'rtl'
+              }}>في مدونتنا، نقدم لك محتوى منظم ومرتب حول الدراسة والحياة الجامعية في تركيا، بدءًا من المعلومات الأساسية، مرورًا بالنصائح العملية، وصولاً إلى تجارب الطلاب وقصص النجاح، لتجد كل ما تحتاجه في مكان واحد وبأسلوب واضح وسهل المتابعة.</p>
               <div
                 className="bloghome-container"
                 style={{
